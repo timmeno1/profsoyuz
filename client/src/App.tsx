@@ -1,11 +1,13 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import './App.css';
+import { Navbar } from './Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
-       Some App    
-    </div>
+    <Container disableGutters={true} maxWidth={false} >
+      <Navbar />
+    </Container>
   );
 }
 
