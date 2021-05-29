@@ -3,6 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-button, button:focus {
-    outline: none; 
-  }
