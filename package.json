@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start" : "node app"
+    "start": "node app"
   },
   "author": "Kodirov Timur",
   "license": "ISC",
   "dependencies": {
+    "clsx": "^1.1.1",
     "express": "^4.17.1",
     "mongoose": "^5.12.11"
   }
