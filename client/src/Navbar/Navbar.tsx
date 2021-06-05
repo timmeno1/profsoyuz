@@ -35,17 +35,17 @@ export const Navbar = () => {
                 role="presentation"
                 >
                         <List className={clsx(classes.list) }>
-                            <ListItem  color="primary" button>
+                            <ListItem  color="primary" button component={Link} to={"/news"}>
                                 <ListItemText disableTypography
                                     primary={<Typography color="primary">Новости</Typography>}  
                                     />
                             </ListItem>
-                            <ListItem  color="primary" button>
+                            <ListItem  color="primary" button component={Link} to={"/join"}>
                                 <ListItemText disableTypography
                                     primary={<Typography color="primary">Вступить</Typography>}  
                                     />
                             </ListItem>
-                            <ListItem  color="primary" button>
+                            <ListItem  color="primary" button component={Link} to={"/about"}>
                                 <ListItemText disableTypography
                                     primary={<Typography color="primary">О нас</Typography>}  
                                     />
@@ -75,7 +75,7 @@ export const Navbar = () => {
                                 </Drawer>
                             </Hidden>  
                             <Hidden  only={['xs']}>
-                                <ButtonGroup variant="text" color="primary" aria-label="text primary button group" component="div" >
+                                <ButtonGroup variant="text" size="large" color="primary" aria-label="text primary button group" component="div" >
                                     <Button color="primary" component={Link} to={"/news"}>Новости</Button>
                                     <Button color="primary" component={Link} to={"/join"}>Вступить</Button>
                                     <Button color="primary" component={Link} to={"/about"}>О нас</Button>
