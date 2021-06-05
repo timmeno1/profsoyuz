@@ -2,6 +2,7 @@ import { AppBar, IconButton, Toolbar, Button, Drawer, List, ListItem, makeStyles
 import MenuIcon from '@material-ui/icons/Menu'
 import React from 'react'
 import clsx from 'clsx'
+import {BrowserRouter, Link} from 'react-router-dom'
 
 
 const useStyles = makeStyles({
@@ -58,29 +59,31 @@ export const Navbar = () => {
     return (
         <AppBar position="static" color="default" >
             <Container>
-                <Toolbar classes={{
-                    root: classes.root
-                }}>
-                        <Button color="primary" variant="contained" >
-                            Профсоюз
-                        </Button>
-                        <Hidden  only={['sm', 'md', 'lg', 'xl']} >
-                            <IconButton color="primary" edge="start" aria-label="menu" onClick={handleDrawerOpen} >
-                                <MenuIcon />
-                            </IconButton>
-                            <Drawer anchor={'left'} open={open} onClose={handleDrawerClose}>
-                                <MyList />
-                            </Drawer>
-                        </Hidden>  
-                        <Hidden  only={['xs']}>
-                            <ButtonGroup variant="text" color="primary" aria-label="text primary button group" component="div" >
-                                <Button color="primary">Новости</Button>
-                                <Button color="primary">Вступить</Button>
-                                <Button color="primary">О нас</Button>
-                            </ButtonGroup>
-                        </Hidden>
-                        
-                </Toolbar>
+                <BrowserRouter>
+                    <Toolbar classes={{
+                        root: classes.root
+                    }}>
+                            <Button color="primary" variant="contained" component={Link} to={"/"}>
+                                Профсоюз
+                            </Button>
+                            <Hidden  only={['sm', 'md', 'lg', 'xl']} >
+                                <IconButton color="primary" edge="start" aria-label="menu" onClick={handleDrawerOpen} >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Drawer anchor={'left'} open={open} onClose={handleDrawerClose}>
+                                    <MyList />
+                                </Drawer>
+                            </Hidden>  
+                            <Hidden  only={['xs']}>
+                                <ButtonGroup variant="text" color="primary" aria-label="text primary button group" component="div" >
+                                    <Button color="primary" component={Link} to={"/news"}>Новости</Button>
+                                    <Button color="primary" component={Link} to={"/join"}>Вступить</Button>
+                                    <Button color="primary" component={Link} to={"/about"}>О нас</Button>
+                                </ButtonGroup>
+                            </Hidden>
+                            
+                    </Toolbar>
+                </BrowserRouter>
             </Container>
             
             
