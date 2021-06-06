@@ -4,6 +4,10 @@ import React from 'react'
 import { Counter } from './Counter';
 import { Feature } from './Feature';
 import { Hero } from './Hero';
+import { Media } from './Media';
+import photo from '../assets/pexels-photo-5276003.jpeg'
+import photo1 from '../assets/pexels-photo-5695348.jpeg'
+import  {v4} from 'uuid'
 
 
 
@@ -19,7 +23,6 @@ const countersData = [
         counter: 576
     }
 ]
-
 
 const featuresData = [
     {
@@ -58,6 +61,45 @@ const featuresData = [
         text: "asjk,dhfglksjdbnfgkj hasdkjfgnkljashdfgk ;lakdsfjg;kljhasdf;g",
         icon: "bi bi-calendar-plus-fill"
     },
+]
+
+const  tileData = [
+    {
+        id: v4(),
+        img: photo,
+        title: "wertwert",
+        author: "wertwert"
+    },
+    {
+        id: v4(),
+        img: photo1,
+        title: "wertwert",
+        author: "wertwert"
+    },
+    {
+        id: v4(),   
+        img: photo1,
+        title: "wertwert",
+        author: "wertwert"
+    },
+    {
+        id: v4(),
+        img: photo1,
+        title: "wertwert",
+        author: "wertwert"
+    },
+    {
+        id: v4(),
+        img: photo,
+        title: "wertwert",
+        author: "wertwert"
+    },
+    {
+        id: v4(),
+        img: photo1,
+        title: "wertwert",
+        author: "wertwert"
+    }
 ]
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -142,9 +184,7 @@ export const Home = () => {
                 </Grid > 
 
                 <Grid item className={classes.gridItem}>
-                    <Paper className={classes.paper}>
-                        Media Section
-                    </Paper>
+                    <Media tileData={tileData}/>
                 </Grid > 
             </Grid> 
         </Container>
