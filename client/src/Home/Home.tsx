@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@material-ui/core'
+import { Container, Grid, Paper, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import React from 'react'
 import { Counter } from './Counter';
@@ -11,12 +11,12 @@ const countersData = [
     {
         id: "189023123123",
         title: "Количество участников",
-        counter: 10
+        counter: 327
     },
     {
         id: "189023123123",
         title: "Количество решенных проблем",
-        counter: 10
+        counter: 576
     }
 ]
 
@@ -81,6 +81,9 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor:theme.palette.primary.main,
         height: "200px",
     },
+    h3: {
+        padding: theme.spacing(2)
+    }
   }),
 );
 
@@ -103,14 +106,21 @@ export const Home = () => {
 
                 <Grid item className={classes.gridItem}>
                     <Paper className={classes.paper} color="primary">
+
+                        <Typography className={classes.h3} variant="h4" align="center" color="textPrimary">
+                            Преимущества вступления впрофсоюз
+                        </Typography>
+
                         <Grid className={classes.root}
                               container
                               spacing={1}>
+
                             {featuresData.map(feature => (
                                 <Grid item sm={4} xs={6}>
                                     <Feature key={feature.id} title={feature.title} text={feature.text} icon={feature.icon} />
                                 </Grid>
                             ))}
+
                         </Grid>
                     </Paper>
                 </Grid > 
@@ -122,7 +132,7 @@ export const Home = () => {
                               spacing={1}>
                             {countersData.map((counter, index) => {
                                 return (
-                                    <Grid item sm={6} xs={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <Counter key={counter.id} title={counter.title} counter={counter.counter} />
                                     </Grid>
                                 )}

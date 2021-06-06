@@ -27,7 +27,9 @@ export const Feature = (props:FeatureType) => {
             <CardContent>
                 <Typography color="primary" variant="h2" ><i className={`${props.icon}`}></i></Typography>
             </CardContent>
-            <CardHeader className={classes.redTextColor}
+            <CardHeader 
+                titleTypographyProps={{variant: "h6"}} 
+                className={classes.redTextColor}
                 title={`${props.title}`}
             />
             <CardContent>
