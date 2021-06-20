@@ -1,92 +1,43 @@
-import { AppBar, IconButton, Toolbar, Button, Drawer, List, ListItem, makeStyles, Hidden, Typography, ButtonGroup, ListItemText, Container } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import React from 'react'
-import clsx from 'clsx'
-import {BrowserRouter, Link} from 'react-router-dom'
-
-
-const useStyles = makeStyles({
-    root: {
-        justifyContent: "space-between",
-
-    } , 
-    list: {
-       padding : "1rem",
-    },
-})
+import React, { ReactHTMLElement } from 'react'
+import {
+  Link
+} from "react-router-dom";
 
 export const Navbar = () => {
 
-    const [open, setOpen] = React.useState(false);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    }
-    
-    const handleDrawerClose = () => {
-        setOpen(false);
+
+    const onMobileMenuClick = () => {
+        var elems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(elems)
     }
 
-    const classes = useStyles()
-
-
-    const MyList = () => {
-        return (
-            <div
-                role="presentation"
-                >
-                        <List className={clsx(classes.list) }>
-                            <ListItem  color="primary" button component={Link} to={"/news"}>
-                                <ListItemText disableTypography
-                                    primary={<Typography color="primary">Новости</Typography>}  
-                                    />
-                            </ListItem>
-                            <ListItem  color="primary" button component={Link} to={"/join"}>
-                                <ListItemText disableTypography
-                                    primary={<Typography color="primary">Вступить</Typography>}  
-                                    />
-                            </ListItem>
-                            <ListItem  color="primary" button component={Link} to={"/about"}>
-                                <ListItemText disableTypography
-                                    primary={<Typography color="primary">О нас</Typography>}  
-                                    />
-                            </ListItem>
-                        </List>
-
-            </div>
-        )
-    }
 
     return (
-        <AppBar position="static" color="default" >
-            <Container>
-                <BrowserRouter>
-                    <Toolbar classes={{
-                        root: classes.root
-                    }}>
-                            <Button color="primary" variant="contained" component={Link} to={"/"}>
-                                Профсоюз
-                            </Button>
-                            <Hidden  only={['sm', 'md', 'lg', 'xl']} >
-                                <IconButton color="primary" edge="start" aria-label="menu" onClick={handleDrawerOpen} >
-                                    <MenuIcon />
-                                </IconButton>
-                                <Drawer anchor={'left'} open={open} onClose={handleDrawerClose}>
-                                    <MyList />
-                                </Drawer>
-                            </Hidden>  
-                            <Hidden  only={['xs']}>
-                                <ButtonGroup variant="text" size="large" color="primary" aria-label="text primary button group" component="div" >
-                                    <Button color="primary" component={Link} to={"/news"}>Новости</Button>
-                                    <Button color="primary" component={Link} to={"/join"}>Вступить</Button>
-                                    <Button color="primary" component={Link} to={"/about"}>О нас</Button>
-                                </ButtonGroup>
-                            </Hidden>
-                            
-                    </Toolbar>
-                </BrowserRouter>
-            </Container>
-            
-            
-        </AppBar>
+        <div>
+            <nav>
+                <div className={"nav-wrapper container"}>
+                    <Link to={"/"} className={"brand-logo"}>Logo</Link>
+                    <a href="#" onClick={onMobileMenuClick} data-target="mobile-demo" className="sidenav-trigger "><i className="bi bi-list small"></i></a>
+                    <ul id={"nav-mobile"} className={"right hide-on-med-and-down"}>
+                        <li>
+                            <Link to={"/news"}>Новости</Link>
+                        </li>
+                        <li>
+                            <Link to={"/join"}>Вступить</Link>
+                        </li>
+                        <li>
+                            <Link to={"/about"}>О нас</Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <ul className="sidenav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+            </ul>
+        </div>
     )
 }
