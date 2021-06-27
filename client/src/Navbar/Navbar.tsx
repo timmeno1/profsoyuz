@@ -1,4 +1,4 @@
-import React, { ReactHTMLElement } from 'react'
+import React from 'react'
 import {
   Link
 } from "react-router-dom";
@@ -17,8 +17,10 @@ export const Navbar = () => {
             <nav>
                 <div className={"nav-wrapper container"}>
                     <Link to={"/"} className={"brand-logo"}>Logo</Link>
-                    <a href="#" onClick={onMobileMenuClick} data-target="mobile-demo" className="sidenav-trigger "><i className="bi bi-list small"></i></a>
-                    <ul id={"nav-mobile"} className={"right hide-on-med-and-down"}>
+
+                    <span  onClick={onMobileMenuClick} data-target="mobile-menu" className="sidenav-trigger show-on-med-and-down hide-on-large-only"><i className="bi bi-list small"></i></span>
+                    
+                    <ul id={"nav"} className={"right hide-on-med-and-down"}>
                         <li>
                             <Link to={"/news"}>Новости</Link>
                         </li>
@@ -32,11 +34,16 @@ export const Navbar = () => {
                 </div>
             </nav>
 
-            <ul className="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
+            <ul className="sidenav" id="mobile-menu">
+                <li>
+                    <Link to={"/news"}>Новости</Link>
+                </li>
+                <li>
+                    <Link to={"/join"}>Вступить</Link>
+                </li>
+                <li>
+                    <Link to={"/about"}>О нас</Link>
+                </li>
             </ul>
         </div>
     )
