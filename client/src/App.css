@@ -1,5 +1,24 @@
 
-    .parallax-container {
-        height: 350px;
-        margin-top:16px;
-      }
+.parallax-container {
+  height: 350px;
+  margin-top:16px;
+}
+
+.solvedCounter, .membersCounter {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  color:#ee6e73;
+
+}
+.counterLabel {
+  color:rgba(0,0,0,0.87);
+}
+
+.countersBlock {
+  padding-top:30px;
+}
+
+.mediaItem {
+  margin-bottom:10px;
+}

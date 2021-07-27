@@ -1,4 +1,5 @@
 import React from 'react'
+import { Devider } from '../common/Devider'
 import { Counters } from './Counter'
 import { Features } from './Features'
 import { Media } from './Media'
@@ -48,7 +49,9 @@ export const Home = () => {
         <div>
             <PageHero />
             <Features features={obj.Features}/>
+            <Devider />
             <Counters />
+            <Devider />
             <Media />
         </div>
     )

@@ -11,7 +11,7 @@ type FeaturesPropsType = {
 
 export const Features = (props:FeaturesPropsType) => {
     return (
-        <div className="section">
+        <div className="section container">
 
         <div className="row">
             <div className="col s12 m4">
