@@ -1,5 +1,5 @@
 import React from 'react'
-import { Devider } from '../common/Devider'
+import { Divider } from '../../common/Divider'
 import { Counters } from './Counter'
 import { Features } from './Features'
 import { Media } from './Media'
@@ -40,18 +40,24 @@ let obj = {
 
 export const Home = () => {
     
-    console.log("have called")
 
-    //M.toast({html: 'I am a toast!'})
+    // use it for render counter when it would be seen
+    //useEffect(() => {
+    //    window.addEventListener('scroll', () => {
+    //        if(window.pageYOffset >= 200) {
+    //            console.log("pageYoffset works")
+    //        }
+    //    });
+    //})
 
 
     return (
         <div>
             <PageHero />
             <Features features={obj.Features}/>
-            <Devider />
+            <Divider />
             <Counters />
-            <Devider />
+            <Divider />
             <Media />
         </div>
     )

@@ -1,15 +1,23 @@
-import React from 'react'
-import {
-  Link
-} from "react-router-dom";
+import React, { useEffect } from 'react'
+import {Link} from 'react-router-dom'
+import M from 'materialize-css'
 
 export const Navbar = () => {
 
 
-    const onMobileMenuClick = () => {
-        var elems = document.querySelectorAll('.sidenav');
+    useEffect(() => {
+        let elems = document.querySelectorAll('.sidenav');
         M.Sidenav.init(elems)
+    })
+    const onSidenavLinkClick = () => {
+        let elem = document.querySelector('.sidenav')
+        if(elem) {
+            let sidenav = M.Sidenav.getInstance(elem);
+            sidenav.close()
+        }
     }
+
+
 
 
     return (
@@ -18,7 +26,7 @@ export const Navbar = () => {
                 <div className={"nav-wrapper container"}>
                     <Link to={"/"} className={"brand-logo"}>Logo</Link>
 
-                    <span  onClick={onMobileMenuClick} data-target="mobile-menu" className="sidenav-trigger show-on-med-and-down hide-on-large-only"><i className="bi bi-list small"></i></span>
+                    <span data-target="mobile-menu" className="sidenav-trigger show-on-med-and-down hide-on-large-only"><i className="bi bi-list small"></i></span>
                     
                     <ul id={"nav"} className={"right hide-on-med-and-down"}>
                         <li>
@@ -36,13 +44,13 @@ export const Navbar = () => {
 
             <ul className="sidenav" id="mobile-menu">
                 <li>
-                    <Link to={"/news"}>Новости</Link>
+                    <Link onClick={onSidenavLinkClick} to={"/news"}>Новости</Link>
                 </li>
                 <li>
-                    <Link to={"/join"}>Вступить</Link>
+                    <Link onClick={onSidenavLinkClick} to={"/join"}>Вступить</Link>
                 </li>
                 <li>
-                    <Link to={"/about"}>О нас</Link>
+                    <Link onClick={onSidenavLinkClick} to={"/about"}>О нас</Link>
                 </li>
             </ul>
         </div>

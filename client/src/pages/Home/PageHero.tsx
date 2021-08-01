@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import M from 'materialize-css'
 //import bg1 from '../assets/img/background/background1.jpg'
 
 export const PageHero = () => {
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.parallax');
-        M.Parallax.init(elems);
+      useEffect(() => {
+        M.AutoInit();
       });
 
     return (

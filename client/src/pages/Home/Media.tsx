@@ -1,12 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import M from 'materialize-css'
 
 export const Media = () => {
 
-    document.addEventListener('DOMContentLoaded', ()=>{
-
-        var elems = document.querySelectorAll('.materialboxed');
-        M.Materialbox.init(elems);
-    })
+    useEffect(() => {
+        M.AutoInit();
+      });
 
     return (
         <div className={"section container"}>

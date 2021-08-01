@@ -4,6 +4,10 @@
   margin-top:16px;
 }
 
+.parallax img {
+  filter: blur(0.5px) brightness(0.7) grayscale(0.2) saturate(0.9) sepia(0.2) contrast(0.8);
+}
+
 .solvedCounter, .membersCounter {
   display:flex;
   align-items: center;
@@ -17,8 +21,84 @@
 
 .countersBlock {
   padding-top:30px;
+  padding-bottom:20px;
 }
 
 .mediaItem {
   margin-bottom:10px;
 }
+
+
+
+
+
+
+/*------------------------------ news page -------------------------*/ 
+
+
+.newsItemBody {
+  transform: scale(1);
+  transition: transform 0.5s ease;
+  margin: 20px 0;
+}
+.newsItemBody:hover, .newsItemBody:focus, .newsItemBody:active {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.tags {
+  position: relative;
+
+  display:flex;
+  flex-wrap:wrap;
+}
+
+
+
+
+
+
+
+
+
+/*------------------------------ common components styles -------------------------*/ 
+
+.divider {
+
+}
+
+
+
+  /* label color */
+  .input-field label {
+    color: #000;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #ee6e73;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #ee6e73;
+    box-shadow: 0 1px 0 0 #ee6e73;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #ee6e73;
+    box-shadow: 0 1px 0 0 #ee6e73;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #ee6e73;
+    box-shadow: 0 1px 0 0 #ee6e73;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #ee6e73;
+  }
+
+  input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #ee6e73;
+    -webkit-box-shadow: 0 1px 0 0 #ee6e73;
+    box-shadow: 0 1px 0 0 #ee6e73;
+  }
