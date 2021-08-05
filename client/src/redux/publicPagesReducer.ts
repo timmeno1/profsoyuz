@@ -1,0 +1,1 @@
+// reducer for public view of pages Home, About and Join

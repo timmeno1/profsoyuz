@@ -16,7 +16,6 @@ export const PageHero = () => {
                     <div className="row center">
                     <h5 className="header col s12 grey-text text-lighten-2">Защита прав на работе</h5>
                     </div>
-            
                 </div>
             </div>
             <div className="parallax"><img src={"https://loremflickr.com/1905/1080"} alt="Unsplashed background img 1" /></div>

@@ -5,8 +5,8 @@ import M from 'materialize-css'
 
 export const Join = () => {
     let datePickerOption = {
-        isRTL: true,
-        yearRange: 70
+        yearRange: 70,
+        firstDay: 1
     }
 
     useEffect(() => {

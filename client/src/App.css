@@ -102,3 +102,24 @@
     -webkit-box-shadow: 0 1px 0 0 #ee6e73;
     box-shadow: 0 1px 0 0 #ee6e73;
   }
+
+
+
+  /* -------------------------------------  manage pages ------------------- */ 
+
+
+.manageNav {
+  font-size: 18px;
+  margin:16px;
+}
+.manageNav-item a:hover {
+  background-color: #ee6e73;
+  color: #fff;
+}
+.manageNav-item {
+  padding:0 !important;
+}
+.manageNav-item a{
+  padding:20px 10px;
+  display:block;
+}

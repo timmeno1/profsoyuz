@@ -11,6 +11,7 @@ import { Navbar } from './Navbar/Navbar';
 import { News } from './pages/News/News';
 import { Join } from './pages/Join/Join';
 import { About } from './pages/About/About';
+import { Manage } from './pages/Manage/Manage';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
+            <Route path="/manage">
+              <Manage />
+            </Route>
             <Route path="/about">
               <About />
             </Route>
