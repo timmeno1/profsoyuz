@@ -38,27 +38,20 @@ let obj = {
     }
 }
 
-export const Home = () => {
-    
-
-    // use it for render counter when it would be seen
-    //useEffect(() => {
-    //    window.addEventListener('scroll', () => {
-    //        if(window.pageYOffset >= 200) {
-    //            console.log("pageYoffset works")
-    //        }
-    //    });
-    //})
-
+export const Home = (props:any) => {
 
     return (
         <div>
-            <PageHero />
-            <Features features={obj.Features}/>
+            <PageHero 
+                headingTitle={props.homePage.headingTitle} 
+                afterTitle={props.homePage.afterTitle} 
+                heroImage={props.homePage.heroImage} 
+                />
+            <Features features={props.homePage.features}/>
             <Divider />
-            <Counters />
+            <Counters counters={props.homePage.counters}/>
             <Divider />
-            <Media />
+            <Media media={props.homePage.media}/>
         </div>
     )
 }
