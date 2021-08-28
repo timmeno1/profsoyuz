@@ -6,37 +6,6 @@ import { Media } from './Media'
 import { PageHero } from './PageHero'
 
 
-let obj = {
-    PageHero: {
-        heroText: "Профсоюз",
-        heroImg: ""
-    },
-    Features: [
-        {
-            icon: "bi-calendar3",
-            textHeader: "textHeader",
-            text: "tralalala"
-        },
-        {
-            icon: "bi-shield-check",
-            textHeader: "textHeader",
-            text: "tralalala"
-        },
-        {
-            icon: "bi-watch",
-            textHeader: "textHeader",
-            text: "tralalala"
-        }
-    ],
-    Counters: {
-        members: 357,
-        solvedProblems: 539
-    },
-    Media: {
-        photos: [],
-        video: ""
-    }
-}
 
 export const Home = (props:any) => {
 

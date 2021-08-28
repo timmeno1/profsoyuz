@@ -1,4 +1,3 @@
-import React from 'react'
 import AnimatedNumber from "react-animated-numbers"
 
 type CountersType = {
@@ -8,12 +7,16 @@ type CountersType = {
     }
 }
 
+
 export const Counters = (props:CountersType) => {
+    
+
 
     return (
         <div className={"countersBlock row container"} >
             <div className={"membersCounter col s12 m6"} >
                 <div className={"counterLabel"}>Количество участников: </div>
+                
                 <AnimatedNumber
                     fontStyle={{ fontSize: 32 }}
                     animateToNumber={props.counters.members}

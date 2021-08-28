@@ -7,10 +7,10 @@ import './App.css'
 import { Footer } from './Footer/Footer'
 import { Navbar } from './Navbar/Navbar'
 import { News } from './pages/News/News'
-import { Join } from './pages/Join/Join'
-import { About } from './pages/About/About'
+import { AboutUsContainer } from './pages/About/About'
 import { Manage } from './pages/Manage/Manage'
 import HomeContainer from './pages/Home/HomeContainer'
+import { JoinContainer } from './pages/Join/JoinContainer'
 
 function App() {
   return (
@@ -24,13 +24,13 @@ function App() {
                 <Manage />
               </Route>
               <Route path="/about">
-                <About />
+                <AboutUsContainer />
               </Route>
               <Route path="/news">
                 <News />
               </Route>
               <Route path="/join">
-                <Join />
+                <JoinContainer />
               </Route>
               <Route path="/">
                 <HomeContainer />
