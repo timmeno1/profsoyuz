@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {MouseEvent,  RefObject, useEffect, useRef, useState} from 'react';
 import M from 'materialize-css'
 
 
@@ -7,14 +7,10 @@ type joinPageType = any; // nado dopisat
 
 export const Join = (props:joinPageType) => {
 
-    
-    const datePickerOption = {
-        yearRange: 70,
-        firstDay: 1
-    }
+    let datePicker:RefObject<HTMLInputElement> = useRef(null)
+
 
     const [member, setMember] = useState({
-        id: "", 
         name: "", 
         email: "",
         birthDate: "", 
@@ -25,14 +21,19 @@ export const Join = (props:joinPageType) => {
     })
     
     useEffect(() => {
-        debugger
-        let elem = document.getElementById('#birthdate')
-        M.AutoInit();
-        M.updateTextFields()
+        
+        const elem = document.getElementById('birthdate')
         if(elem) {
-            M.Datepicker.init(elem, datePickerOption);
+            M.Datepicker.init(elem, {
+                yearRange: 70,
+                firstDay: 1,
+                onClose: () => {
+                    setMember({...member, birthDate: datePicker.current!.value!})
+                }
+            });
         }
-      }, [member, datePickerOption]);
+        M.updateTextFields()
+      }, [member]);
 
 
     return (
@@ -46,9 +47,8 @@ export const Join = (props:joinPageType) => {
                     <i className="bi bi-person-circle prefix"></i>
                     <input 
                         onChange={
-                            (e: React.FormEvent<HTMLInputElement>) => {
+                            (e:any) => {
                                 setMember({...member, name: e.currentTarget.value})
-                                console.log(member)
                         }} 
                         placeholder="TEN VLADISLAV" 
                         id="name" 
@@ -62,14 +62,10 @@ export const Join = (props:joinPageType) => {
                 <div className="input-field col s12">
                     <i className="bi bi-calendar-date prefix"></i>
                     <input 
-                        onSelect={
-                            (e: React.FormEvent<HTMLInputElement>) => {
-                                setMember({...member, birthDate: e.currentTarget.value})
-                                console.log(member)
-                            }} 
                         type="text" 
                         className="datepicker" 
                         id="birthdate"
+                        ref={ datePicker }
                     />
                     <label htmlFor="birthdate">Дата рождения</label>
                 </div>
@@ -81,7 +77,6 @@ export const Join = (props:joinPageType) => {
                         onChange={
                             (e: React.FormEvent<HTMLInputElement>) => {
                                 setMember({...member, homeAddress: e.currentTarget.value})
-                                console.log(member)
                             }} 
                         id="homeAddress" 
                         type="text" 
@@ -96,7 +91,6 @@ export const Join = (props:joinPageType) => {
                         onChange={
                             (e: React.FormEvent<HTMLInputElement>) => {
                                 setMember({...member, phoneNumber: e.currentTarget.value})
-                                console.log(member)
                             }} 
                         id="phoneNumber" 
                         type="tel" 
@@ -112,7 +106,6 @@ export const Join = (props:joinPageType) => {
                         onChange={
                             (e: React.FormEvent<HTMLInputElement>) => {
                                 setMember({...member, workPlace: e.currentTarget.value})
-                                console.log(member)
                             }} 
                         id="workPlace" 
                         type="text" 
@@ -127,7 +120,6 @@ export const Join = (props:joinPageType) => {
                         onChange={
                             (e: React.FormEvent<HTMLInputElement>) => {
                                 setMember({...member, beforeWorkPlace: e.currentTarget.value})
-                                console.log(member)
                             }} 
                         id="beforeWorkPlace" 
                         type="text" 
@@ -142,7 +134,6 @@ export const Join = (props:joinPageType) => {
                         onChange={
                             (e: React.FormEvent<HTMLInputElement>) => {
                                 setMember({...member, email: e.currentTarget.value})
-                                console.log(member)
                             }} 
                         id="email" 
                         type="email" 
@@ -152,7 +143,24 @@ export const Join = (props:joinPageType) => {
                 </div>
             </div>
             <div className="row">
-                <button onClick={(newMember) => { props.submitJoinData(newMember) }}  className="btn">Отправить</button>
+                <button 
+                    onClick={(e:MouseEvent)=>{
+                        e.preventDefault()
+                        const inputs = document.querySelectorAll('input')
+                        props.submitJoinData(member)
+                        setMember({
+                            name: "", 
+                            email: "",
+                            birthDate: "", 
+                            homeAddress: "", 
+                            phoneNumber: "", 
+                            workPlace: "",
+                            beforeWorkPlace: ""
+                        })
+                        inputs.forEach( input => input.value="" )
+                        M.toast({html:"Ваши данные отправлены."})
+                    }}
+                    className="btn">Отправить</button>
             </div>
             </form>
         </div>

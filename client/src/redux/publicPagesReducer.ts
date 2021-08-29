@@ -83,6 +83,8 @@ export const aboutPageReducer = (state = initialAboutPageState, action:any) => {
 export const joinPageReducer = (state = initialJoinPageState, action:any) => {
     switch (action.type) {
         case "SUBMIT_DATA": 
+            action.newMember.id = "123123" // adding new id, maybe on backend
+            debugger
             return {
                 ...state, 
                 members: [...state.members, action.newMember ] 
