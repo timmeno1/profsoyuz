@@ -16,9 +16,9 @@ export const Media = (props:MediaType) => {
         <div className={"section container"}>
             <div className={"mediaBlock row"}>
                 {
-                    props.media.map( media => {
+                    props.media.map( (media, i) => {
                         return (
-                            <div className={"col s12 m6 l4 mediaItem"}>
+                            <div key={i} className={"col s12 m6 l4 mediaItem"}>
                                 <img className={"materialboxed responsive-img"} src={media} alt={"Media 1"} />
                             </div>
                         )

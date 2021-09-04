@@ -16,10 +16,10 @@ export const Features = (props:FeaturesPropsType) => {
 
         <div className="row">
             {
-                props.features.map((feature) => {
+                props.features.map((feature, i) => {
                     return (
 
-                        <div className="col s12 m4">
+                        <div key={i} className="col s12 m4">
                             <div className="icon-block">
                                 <h2 className="center brown-text"><i className={`bi ${feature.icon}`}></i></h2>
                                 <h5 className="center">{feature.textHeader}</h5>
