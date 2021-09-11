@@ -3,7 +3,6 @@ import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom'
 import { ManageNews } from './ManageNews'
 import { ManagePages } from './ManagePages'
 import { ManageMembers } from './ManageMembers'
-import { ManageMedia } from './ManageMedia'
 import { useMediaQuery } from 'react-responsive'
 
 const Dashboard = () => {
@@ -17,7 +16,6 @@ const Dashboard = () => {
 }
 
 const ManageNav = (props:any) => {
-    console.log(props.isTabletAndAbove)
     
     if(!props.isTabletAndAbove) {
         return (
@@ -75,12 +73,10 @@ export const Manage = () => {
             </div>
 
             <div className="col s9">
-
                 <Switch>
-                    <Route path={`${path}/news`} component={ManageNews} />
                     <Route path={`${path}/pages`} component={ManagePages}/>
+                    <Route path={`${path}/news`} component={ManageNews} />
                     <Route path={`${path}/members`} component={ManageMembers}/>
-                    <Route path={`${path}/media`} component={ManageMedia}/>
                     <Route path={`${path}`} component={Dashboard}/>
                 </Switch>
             </div>

@@ -32,7 +32,7 @@ function App() {
               <Route path="/join">
                 <JoinContainer />
               </Route>
-              <Route exact path="/">
+              <Route path="/">
                 <HomeContainer />
               </Route>
             </Switch>
