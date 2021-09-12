@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
-import { Home } from '../Home/Home'
+import React, { useEffect, useRef, useState } from 'react'
 import { PageHero } from '../Home/PageHero'
+import M from 'materialize-css'
 
 export const ManagePagesHome = () => {
 
-    const [ homePagePreview, setHomePagePreview ] = useState({
+    useEffect(() => {
+        M.AutoInit()
+    })
+
+    const pageHeroFile = useRef<HTMLInputElement>(null)
+
+    const [homePagePreview, setHomePagePreview] = useState({
         headingTitle: "Профсоюз",
         afterTitle: "Защита прав на работе",
         heroImage: "https://loremflickr.com/1905/1080",
@@ -38,55 +44,72 @@ export const ManagePagesHome = () => {
             "https://loremflickr.com/800/640",
             "https://loremflickr.com/800/640"
         ]
-})
+    })
     console.log("home")
     return (
         <div className=" row">
-            <div className="section row card">
-                <h5>Главный Заголовок</h5>
-                <div className="col s6">
-                        <div className="row">
-                            <div className="input-field col s10">
-                                <i className="bi bi-person-circle prefix"></i>
-                                <input
-                                    onChange={
-                                        (e:any) => {
-                                            console.log('huyak')
-                                    }} 
-                                    placeholder="" 
-                                    id="heroPageHeader" 
-                                    type="text" 
-                                    className="validate"
-                                />
-                                <label htmlFor="heroPageHeader">Заголовок</label>
+            <div className="row ">
+                <div className=" row"><h5>Главный Заголовок</h5></div>
+
+                <div className="col s11 m11 l5 ">
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <input
+                                onChange={
+                                    (e: any) => {
+                                        setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
+                                    }}
+                                placeholder=""
+                                id="heroPageHeader"
+                                type="text"
+                                className="validate"
+                            />
+                            <label htmlFor="heroPageHeader">Заголовок</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <textarea 
+                                id="heroPageTitle" 
+                                className="materialize-textarea" 
+                                onChange={(e:any)=>{
+                                    setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
+                            }}/>
+                            <label htmlFor="heroPageTitle">Подзаголовок</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="file-field  input-field col s10">
+
+                            <div className="btn">
+                                <span>File</span>
+                                <input type="file" ref={pageHeroFile} onChange={()=>{
+                                    if(pageHeroFile && pageHeroFile.current && pageHeroFile.current.files){
+                                        let fileLocalUrl = URL.createObjectURL(pageHeroFile.current.files[0])
+                                        console.log(fileLocalUrl)
+                                        setHomePagePreview({...homePagePreview, heroImage: fileLocalUrl})
+                                    }
+                                }}/>
+                            </div>
+                            <div className="file-path-wrapper">
+                                <input className="file-path validate" type="text" placeholder="Изображение" />
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s10">
-                                <i className="bi bi-person-circle prefix"></i>
-                                <textarea id="heroPageTitle" className="materialize-textarea"></textarea>
-                                <label htmlFor="heroPageTitle">Подзаголовок</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="file-field  input-field col s10">
-                                
-                                <div className="btn">
-                                    <span>File</span>
-                                    <input type="file" />
-                                </div>
-                                <div className="file-path-wrapper">
-                                    <input className="file-path validate" type="text" placeholder="Изображение" />
-                                </div>
-                            </div>
-                        </div>
+                    </div>
                 </div>
-                <div className="col s6">
-                                    <PageHero headingTitle={homePagePreview.headingTitle} afterTitle={homePagePreview.afterTitle} heroImage={homePagePreview.heroImage}/>
+                <div className="col s11 m11 l5 offset-l1 overlay-hidden">
+                    <div className="overlay-scroll materialboxed">
+                        <PageHero
+                            headingTitle={homePagePreview.headingTitle}
+                            afterTitle={homePagePreview.afterTitle}
+                            heroImage={homePagePreview.heroImage}
+                        /></div>
                 </div>
-                
-            
-            </div>      
-        </div>  
+
+
+            </div>
+        </div>
     )
 }

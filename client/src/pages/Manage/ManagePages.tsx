@@ -25,13 +25,13 @@ export const ManagePages = () => {
                         </ul>
                         </div>
                         <div>
-                            <div id="home" className="col s12">
+                            <div id="home" className="col s12 custom-section">
                                 <ManagePagesHome />
                             </div>
-                            <div id="about" className="col s12">
+                            <div id="about" className="col s12 custom-section">
                                 <ManagePagesAbout />
                             </div>
-                            <div id="footer" className="col s12">
+                            <div id="footer" className="col s12 custom-section">
                                 <ManagePagesFooter />
                             </div>
                         </div>

@@ -67,7 +67,7 @@ export const Manage = () => {
     return (
 
         
-        <div className=" row">
+        <div className="custom-container row">
             <div className="col s3">
                 <ManageNav url={url} isTabletAndAbove={isTabletOrMobile} />
             </div>
