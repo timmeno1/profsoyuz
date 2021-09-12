@@ -25,7 +25,7 @@ export const ManagePages = () => {
                         </ul>
                         </div>
                         <div>
-                            <div id="home" className="col s12 custom-section">
+                            <div id="home" className="col s12 ">
                                 <ManagePagesHome />
                             </div>
                             <div id="about" className="col s12 custom-section">

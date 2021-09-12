@@ -5,7 +5,17 @@ import M from 'materialize-css'
 export const ManagePagesHome = () => {
 
     useEffect(() => {
-        M.AutoInit()
+        
+        
+        var elems = document.querySelectorAll('.materialboxed');
+        if(elems) {
+            var instances = M.Materialbox.init(elems, { });
+            // used some stuff to prevent closing materialbox on scroll
+            if(instances.length) {
+                let prototype = Object.getPrototypeOf(instances[0])
+                prototype._handleWindowScroll = null
+            }
+        }
     })
 
     const pageHeroFile = useRef<HTMLInputElement>(null)
@@ -48,10 +58,10 @@ export const ManagePagesHome = () => {
     console.log("home")
     return (
         <div className=" row">
-            <div className="row ">
+            <div className="row custom-section">
                 <div className=" row"><h5>Главный Заголовок</h5></div>
 
-                <div className="col s11 m11 l5 ">
+                <div className="col s12 m12 l6 ">
                     <div className="row">
                         <div className="input-field col s10">
                             <i className="bi bi-person-circle prefix"></i>
@@ -99,7 +109,7 @@ export const ManagePagesHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col s11 m11 l5 offset-l1 overlay-hidden">
+                <div className="col s12 m12 l6 overlay-hidden">
                     <div className="overlay-scroll materialboxed">
                         <PageHero
                             headingTitle={homePagePreview.headingTitle}
@@ -107,8 +117,88 @@ export const ManagePagesHome = () => {
                             heroImage={homePagePreview.heroImage}
                         /></div>
                 </div>
-
-
+            </div>
+            <div className="row custom-section">
+                <div className=" row"><h5>Преимущества</h5></div>
+                <div className="col s12 m12 l6 ">
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <input
+                                onChange={
+                                    (e: any) => {
+                                        setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
+                                    }}
+                                placeholder=""
+                                id="heroPageHeader"
+                                type="text"
+                                className="validate"
+                            />
+                            <label htmlFor="heroPageHeader">Заголовок</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <textarea 
+                                id="heroPageTitle" 
+                                className="materialize-textarea" 
+                                onChange={(e:any)=>{
+                                    setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
+                            }}/>
+                            <label htmlFor="heroPageTitle">Подзаголовок</label>
+                        </div>
+                    </div>
+                </div>
+                <div className="col s12 m12 l6 overlay-hidden">
+                    <div className="overlay-scroll materialboxed">
+                        <PageHero
+                            headingTitle={homePagePreview.headingTitle}
+                            afterTitle={homePagePreview.afterTitle}
+                            heroImage={homePagePreview.heroImage}
+                        /></div>
+                </div>
+            </div><div className="row custom-section">
+                <div className=" row"><h5>Фото и видео</h5></div>
+                <div className="col s12 m12 l6 ">
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <input
+                                onChange={
+                                    (e: any) => {
+                                        setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
+                                    }}
+                                placeholder=""
+                                id="heroPageHeader"
+                                type="text"
+                                className="validate"
+                            />
+                            <label htmlFor="heroPageHeader">Заголовок</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <textarea 
+                                id="heroPageTitle" 
+                                className="materialize-textarea" 
+                                onChange={(e:any)=>{
+                                    setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
+                            }}/>
+                            <label htmlFor="heroPageTitle">Подзаголовок</label>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div className="col s12 m12 l6 overlay-hidden">
+                    <div className="overlay-scroll materialboxed">
+                        <PageHero
+                            headingTitle={homePagePreview.headingTitle}
+                            afterTitle={homePagePreview.afterTitle}
+                            heroImage={homePagePreview.heroImage}
+                        /></div>
+                </div>
             </div>
         </div>
     )
