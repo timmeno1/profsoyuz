@@ -1,24 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { PageHero } from '../Home/PageHero'
 import M from 'materialize-css'
+import { Features } from '../Home/Features'
+import { Media } from '../Home/Media'
+import bootstrapExample from "../../assets/img/manage/bootstrap.jpg"
+import { features } from 'process'
 
 export const ManagePagesHome = () => {
 
-    useEffect(() => {
-        
-        
-        var elems = document.querySelectorAll('.materialboxed');
-        if(elems) {
-            var instances = M.Materialbox.init(elems, { });
-            // used some stuff to prevent closing materialbox on scroll
-            if(instances.length) {
-                let prototype = Object.getPrototypeOf(instances[0])
-                prototype._handleWindowScroll = null
-            }
-        }
-    })
-
-    const pageHeroFile = useRef<HTMLInputElement>(null)
+    const pageHeroFileRef = useRef<HTMLInputElement>(null)
 
     const [homePagePreview, setHomePagePreview] = useState({
         headingTitle: "Профсоюз",
@@ -55,6 +45,49 @@ export const ManagePagesHome = () => {
             "https://loremflickr.com/800/640"
         ]
     })
+    const [ featureVal, setFeatureVal ] = useState({
+        number: 0,
+        featureIcon: homePagePreview.features[0].icon,
+        featureHeader: homePagePreview.features[0].textHeader,
+        featureText: homePagePreview.features[0].text
+    });
+
+    const updateFeatureVal = () => {
+
+    }
+    const updateFeaturePreview = (homePagePreview:any, featureVal:any)=>{
+        let newFeatureArr = homePagePreview.features.map((feature:any,i:any)=>{
+            if (i===featureVal.number) {
+                feature.textHeader = featureVal.featureHeader
+                feature.text = featureVal.featureText
+                feature.icon = featureVal.featureIcon
+            }
+            return feature
+        })
+        setHomePagePreview({...homePagePreview, features: [...newFeatureArr
+        ]})
+    }
+
+    useEffect(() => {
+    
+        const materialBoxElements = document.querySelectorAll('.materialboxed')
+        if(materialBoxElements) {
+            const MaterialBoxes = M.Materialbox.init(materialBoxElements, {  })
+            // used some stuff to prevent closing materialbox on scroll
+            if(MaterialBoxes.length) {
+                let protoOfMaterialbox = Object.getPrototypeOf(MaterialBoxes[0])
+                protoOfMaterialbox._handleWindowScroll = () => {return null}    
+            }
+        }
+
+        const textArea = document.getElementById('#featureText')
+        if( textArea ) M.textareaAutoResize( textArea )
+        M.updateTextFields()
+
+        const elems = document.querySelectorAll('.modal');
+        const instances = M.Modal.init(elems, {preventScrolling:false});
+    })
+
     console.log("home")
     return (
         <div className=" row">
@@ -70,7 +103,7 @@ export const ManagePagesHome = () => {
                                     (e: any) => {
                                         setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
                                     }}
-                                placeholder=""
+                                value={ homePagePreview.headingTitle }
                                 id="heroPageHeader"
                                 type="text"
                                 className="validate"
@@ -84,6 +117,7 @@ export const ManagePagesHome = () => {
                             <textarea 
                                 id="heroPageTitle" 
                                 className="materialize-textarea" 
+                                value={ homePagePreview.afterTitle }
                                 onChange={(e:any)=>{
                                     setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
                             }}/>
@@ -95,10 +129,9 @@ export const ManagePagesHome = () => {
 
                             <div className="btn">
                                 <span>File</span>
-                                <input type="file" ref={pageHeroFile} onChange={()=>{
-                                    if(pageHeroFile && pageHeroFile.current && pageHeroFile.current.files){
-                                        let fileLocalUrl = URL.createObjectURL(pageHeroFile.current.files[0])
-                                        console.log(fileLocalUrl)
+                                <input type="file" ref={pageHeroFileRef} onChange={()=>{
+                                    if(pageHeroFileRef && pageHeroFileRef.current && pageHeroFileRef.current.files){
+                                        let fileLocalUrl = URL.createObjectURL(pageHeroFileRef.current.files[0])
                                         setHomePagePreview({...homePagePreview, heroImage: fileLocalUrl})
                                     }
                                 }}/>
@@ -115,59 +148,121 @@ export const ManagePagesHome = () => {
                             headingTitle={homePagePreview.headingTitle}
                             afterTitle={homePagePreview.afterTitle}
                             heroImage={homePagePreview.heroImage}
-                        /></div>
+                        />
+                    </div>
                 </div>
+                <button className="waves-effect waves-light btn" onClick={()=>{window.alert("изменения приняты хДД")}} >Применить изменения</button>
             </div>
             <div className="row custom-section">
                 <div className=" row"><h5>Преимущества</h5></div>
                 <div className="col s12 m12 l6 ">
                     <div className="row">
-                        <div className="input-field col s10">
-                            <i className="bi bi-person-circle prefix"></i>
-                            <input
-                                onChange={
-                                    (e: any) => {
-                                        setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
-                                    }}
-                                placeholder=""
-                                id="heroPageHeader"
-                                type="text"
-                                className="validate"
-                            />
-                            <label htmlFor="heroPageHeader">Заголовок</label>
+                        <div className="input-field col s8 offset-s1">
+                            <select defaultValue="0"  onChange={ (e)=> {
+                                const val = Number.parseInt(e.target.value)
+                                setFeatureVal({...featureVal, 
+                                    number: val, 
+                                    featureHeader: homePagePreview.features[val].textHeader,
+                                    featureIcon: homePagePreview.features[val].icon,
+                                    featureText: homePagePreview.features[val].text
+                                })
+                                const textArea = document.querySelector('#featureText')
+                                if( textArea ) setTimeout(() => {
+                                    M.textareaAutoResize( textArea )
+                                }, 200)
+                            }}>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                            </select>
+                            <label>Выберите номер преимущества</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s10">
                             <i className="bi bi-person-circle prefix"></i>
+                            <input
+                                onChange={
+                                    (e: any) => {
+                                        setFeatureVal({...featureVal, featureHeader: e.currentTarget.value})
+                                    }}
+                                placeholder=""
+                                id="featureHeader"
+                                type="text"
+                                className="validate"
+                                value={featureVal.featureHeader}
+                            />
+                        </div>
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
                             <textarea 
-                                id="heroPageTitle" 
+                                id="featureText" 
                                 className="materialize-textarea" 
+                                value={featureVal.featureText}
                                 onChange={(e:any)=>{
-                                    setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
+                                    setFeatureVal({...featureVal, featureText: e.currentTarget.value})
                             }}/>
-                            <label htmlFor="heroPageTitle">Подзаголовок</label>
+                        </div>
+                        <div className="input-field col s10">
+                            <i className="bi bi-person-circle prefix"></i>
+                            <input 
+                                type="text"
+                                id="featureIcon" 
+                                value={featureVal.featureIcon}
+                                onChange={(e:any)=>{
+                                    setFeatureVal({...featureVal, featureIcon: e.currentTarget.value})
+                            }}/>
+                            <p>Посмотреть список иконок можно тут <a target="_blank" rel="noreferrer" href="https://icons.getbootstrap.com/">icons.getbootstrap.com</a></p>
+                            <div> <p>кликнете по интересующей вас иконке и скопируйте текст который начинается с 
+                                <code> bi-*</code> 
+                                <a href="#!" onClick={(e:any)=>{e.preventDefault()}} data-target="modal1" className="modal-trigger">Пример</a>
+                                </p>
+                                <div id="modal1" className="modal">
+                                    <a href="#!" className="modal-close waves-effect waves-red btn-flat right">X</a>
+                                    <div className="modal-content">
+                                        <img className="responsive-img" src={bootstrapExample} alt="asdqwe" />
+                                    </div>
+                                    <div className="modal-footer">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div></div>
                         </div>
                     </div>
+                    <div className="row">
+                        <button className="btn" onClick={()=>{
+                            updateFeaturePreview(homePagePreview,featureVal)
+                        }}>
+                            Обновить
+                        </button>
+                    </div>
                 </div>
-                <div className="col s12 m12 l6 overlay-hidden">
-                    <div className="overlay-scroll materialboxed">
-                        <PageHero
-                            headingTitle={homePagePreview.headingTitle}
-                            afterTitle={homePagePreview.afterTitle}
-                            heroImage={homePagePreview.heroImage}
-                        /></div>
+                <div className="col s12 m12 l6">
+                    <div className="row overlay-hidden">
+                        <div className="overlay-scroll">
+                            <Features
+                                features={ homePagePreview.features }
+                            />
+                        </div>
+                    </div>
+                    <div className="row section">
+                        <button className="btn" onClick={()=>{window.alert("изменения приняты хДД")}}>
+                            Применить изменения
+                        </button>
+                    </div>
                 </div>
-            </div><div className="row custom-section">
+            </div>
+            <div className="row custom-section">
                 <div className=" row"><h5>Фото и видео</h5></div>
-                <div className="col s12 m12 l6 ">
+                <div className="col s12 ">
                     <div className="row">
                         <div className="input-field col s10">
                             <i className="bi bi-person-circle prefix"></i>
                             <input
                                 onChange={
                                     (e: any) => {
-                                        setHomePagePreview({...homePagePreview, headingTitle: e.currentTarget.value})
+                                        
                                     }}
                                 placeholder=""
                                 id="heroPageHeader"
@@ -175,29 +270,20 @@ export const ManagePagesHome = () => {
                                 className="validate"
                             />
                             <label htmlFor="heroPageHeader">Заголовок</label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s10">
-                            <i className="bi bi-person-circle prefix"></i>
-                            <textarea 
-                                id="heroPageTitle" 
-                                className="materialize-textarea" 
-                                onChange={(e:any)=>{
-                                    setHomePagePreview({...homePagePreview, afterTitle: e.currentTarget.value})
-                            }}/>
-                            <label htmlFor="heroPageTitle">Подзаголовок</label>
                         </div>
                     </div>
                     
                 </div>
-                <div className="col s12 m12 l6 overlay-hidden">
-                    <div className="overlay-scroll materialboxed">
-                        <PageHero
-                            headingTitle={homePagePreview.headingTitle}
-                            afterTitle={homePagePreview.afterTitle}
-                            heroImage={homePagePreview.heroImage}
-                        /></div>
+                <div className="col s12">
+                    <a className="waves-effect waves-light btn modal-trigger" href="#modal2" onClick={(e)=>{e.preventDefault()}}>Педпросмотр</a>
+
+                    <div id="modal2" className="modal">
+                        <div className="modal-content">
+                            <Media media={homePagePreview.media} />
+                        </div>
+                    </div>
+        
+                        
                 </div>
             </div>
         </div>

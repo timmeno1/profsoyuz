@@ -5,7 +5,8 @@ import M from 'materialize-css'
 export const PageHero = (props:any) => {
 
       useEffect(() => {
-        M.AutoInit();
+        var elems = document.querySelectorAll('.parallax');
+        M.Parallax.init(elems);
       });
 
     return (

@@ -3,7 +3,8 @@ import M from 'materialize-css'
 
 
 type MediaType = {
-    media: Array<string>
+    media: Array<string>,
+    video?: string
 }
 
 export const Media = (props:MediaType) => {
@@ -23,8 +24,9 @@ export const Media = (props:MediaType) => {
                             </div>
                         )
                     })
-                }
+                }       
             </div>
+            {props.video ? <div className="video-container"><iframe title="kutak" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameBorder="0"></iframe></div> : <div className="video-container"><iframe title="kutak2"  src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameBorder="0"></iframe></div>}
         </div>
     )
 }

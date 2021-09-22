@@ -1,4 +1,11 @@
 /* ==================== helpers ================= */
+.filler {
+  height: 300px;
+}
+.brake-word {
+  overflow-wrap: break-word;
+}
+
 .overlay-hidden {
   overflow-x: scroll;
 }
@@ -23,6 +30,26 @@
   box-shadow: 0px 4px 4px #888, 0px -4px 4px rgb(175, 174, 174);
   border-radius: 4px;
   padding: 10px 10px;
+}
+
+.custom-section > .col > div > #materialbox-overlay {
+  background-color: #fff;
+}
+
+#back-to-top-btn:hover .bi-arrow-up-circle-fill {
+  cursor: pointer;
+  color: #ee6e73;
+  transition: 0.15s ease-in-out;
+}
+#back-to-top-btn .bi-arrow-up-circle-fill {
+  background-color: #fff;
+  color: #a4a4a4;
+  border-radius: 100%;
+  line-height: 10px;
+  font-size: 55px;
+  display: inline-block;
+  border: none;
+  transition: 0.15s ease-in;
 }
 
 /* ======================  ====================== */

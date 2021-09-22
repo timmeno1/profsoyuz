@@ -11,6 +11,7 @@ import { AboutUsContainer } from './pages/About/About'
 import { Manage } from './pages/Manage/Manage'
 import HomeContainer from './pages/Home/HomeContainer'
 import { JoinContainer } from './pages/Join/JoinContainer'
+import { BackToTopBtn } from './common/BackToTopBtn'
 
 function App() {
   return (
@@ -37,9 +38,7 @@ function App() {
               </Route>
             </Switch>
           <Footer />
-          <div className="fixed-action-btn">
-              <i className="medium grey-text bi bi-arrow-up-circle-fill"></i>
-          </div>
+          <BackToTopBtn />
         </div>
       </Router>
     </Provider>
