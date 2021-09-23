@@ -16,7 +16,7 @@ export const NewsCard = (props) => {
                         <img src={props.newsItem.media[0]} alt={""}/>
                     </div>
                     <div className="card-content">
-                        <span className="card-title red-text text-lighten-2">{props.newsItem.title}<i className="bi bi-arrow-up-square-fill right activator"></i></span>
+                        <span className="card-title red-text text-lighten-2" >{props.newsItem.title}<i className="bi bi-arrow-up-square-fill right activator"></i></span>
                         <Divider />
                         <p className="grey-text text-darken-2">{props.newsItem.description}</p>
                     </div>

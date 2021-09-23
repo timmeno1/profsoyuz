@@ -1,18 +1,25 @@
 import React from 'react'
+//@ts- '--downlevelIteration'
 
 const createLink = (text:string) => {
-    let link, newText
+    let link, textPart, textRest, pointer = text.search(/https?:\/\//)
+    
+    
 
-    if (text.search(/https?:\/\//)) {
-        const urlRegex = /(https?:\/\/[^ ]*)/
+    if (pointer) {
+        const urlRegex = /(https?:\/\/[^ ]*)/g
         let result = text.match(urlRegex)
         if(result) {
-            newText = text.replace(/(https?:\/\/[^ ]*)/, "")
+
+            textPart = text.replace(/(https?:\/\/[^ ]*)/, "")
+            textRest = textPart.slice(pointer, textPart.length)
+            textPart = textPart.slice(0, pointer)
             link = React.createElement(
                 'a', 
                 {'href': result[0], 'target':'_blank', 'referer': 'no-referer'},  
                 result[0].replace(/(https?:\/\/)/, "").replace(/(\/[^ ]*)/, ""))
-            return {link: link, text: newText}
+
+            return {link: link, textPart: textPart, textRest:textRest }
         }
     }
     return null
@@ -44,7 +51,11 @@ export const Features = (props:FeaturesPropsType) => {
                                 <h2 className="center brown-text "><i className={`bi ${feature.icon}`}></i></h2>
                                 <h5 className="center brake-word">{feature.textHeader}</h5>
 
-                                <p className="light brake-word">{ linkExist ? linkExist.text : feature.text} {linkExist? linkExist.link : null}  </p>
+                                <p className="light brake-word">
+                                    { linkExist ? linkExist.textPart : feature.text} 
+                                    {linkExist? linkExist.link : null} 
+                                    { linkExist ? linkExist.textRest : null} 
+                                </p>
                             </div>
                         </div>
                     )

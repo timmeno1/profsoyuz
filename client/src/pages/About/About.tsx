@@ -4,21 +4,25 @@ import { connect } from 'react-redux'
 type AboutUsPropsType = {
     aboutPage: {
         heading: string,
-        text: string
+        text: string,
+        img: string
     }
 }
 
 
-const AboutUs = (props: AboutUsPropsType) => {
+export const AboutUs = (props: AboutUsPropsType) => {
     return (
         <div className="container">
             <div className="section">
-
             <div className="row">
-                <div className="col s12 center">
+                <div className="col s12 m12 l4 center">
+                <img className="responsive-img" src={props.aboutPage.img} alt="" /> 
+                </div>
+                <div className="col s12 m12 l8 center">
                 <h3><i className="mdi-content-send brown-text"></i></h3>
                 <h4>{props.aboutPage.heading}</h4>
-                <p className="left-align light">{props.aboutPage.text}</p>
+                
+                <p className="left-align light valign-wrapper">{props.aboutPage.text}</p>
                 </div>
             </div>
 
