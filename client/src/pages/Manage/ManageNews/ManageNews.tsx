@@ -1,4 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { MouseEvent, useEffect } from 'react'
+import { NewsCard } from '../../News/NewsCard'
+
+
+let newsFeedData = {
+    tags: ["выплата 13 пособия", "новости офиса", "все новости"], 
+    newsFeed: [
+        {
+            id: 'asdwqd12343415',
+            title: " Новость 1",
+            author: "timmeno1",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            newsBody: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            views: 216,
+            date: "2021-05-12",
+            tags: ["новости офиса"],
+            published: true,
+            media: ["https://loremflickr.com/800/480", "https://loremflickr.com/800/480", "https://loremflickr.com/800/480"]
+        },
+        {
+            id: 'asdwqd12343453',
+            title: " Новость 2",
+            author: "timmeno1",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            newsBody: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            views: 216,
+            date: "2021-04-21",
+            tags: ["новости офиса"],
+            published: true,
+            media: ["https://loremflickr.com/800/480", "https://loremflickr.com/800/480", "https://loremflickr.com/800/480"]
+        },
+        {
+            id: 'asdwqd12364345',
+            title: " Новость 3",
+            author: "Yuliya",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            newsBody: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            views: 216,
+            date: "2021-05-03",
+            tags: ["новости офиса"],
+            published: true,
+            media: ["https://loremflickr.com/800/480", "https://loremflickr.com/800/480", "https://loremflickr.com/800/480"]
+        }
+    ] 
+}
 
 export const ManageNews = () => {
 
@@ -62,7 +106,7 @@ export const ManageNews = () => {
                     <ul className="collection">
                         
                         <li className="collection-item">qwe</li>
-                        <li className="collection-item active">asd</li>
+                        <li className="collection-item active brake-word">asgfdjslkgjsdlfkjglsdjf dsfgdf sldkfjglsdjfglkjsd dlsfgjsldfjglksdjfgljsdflkgjsdlfkjgd</li>
                         <li className="collection-item">zxc</li>
                         <li className="collection-item">123</li>
                         <li className="collection-item">rty</li>
@@ -71,7 +115,117 @@ export const ManageNews = () => {
                 </div>
                 <div className="col s12 m8 center">
 
-                    <p className="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                <div className="row">
+                        <div className="input-field col s10 offset-s1">
+                            <input 
+                                onChange={
+                                    (e:any) => {
+                                        //setMember({...member, name: e.currentTarget.value})
+                                }} 
+                                id="newsTitle" 
+                                type="text" 
+                                className="validate"
+                            />
+                            <label className="active" htmlFor="newsTitle">Тема Новости</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10 offset-s1">
+                            <input 
+                                onChange={
+                                    (e:any) => {
+                                        //setMember({...member, name: e.currentTarget.value})
+                                }} 
+                                id="newsAuthor" 
+                                type="text" 
+                                className="validate"
+                            />
+                            <label className="active" htmlFor="newsAuthor">Автор</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10 offset-s1">
+                            <input 
+                                onChange={
+                                    (e:any) => {
+                                        //setMember({...member, name: e.currentTarget.value})
+                                }} 
+                                id="newsTag" 
+                                type="text" 
+                                className="validate"
+                            />
+                            <label className="active" htmlFor="newsTag">Рубрика</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10 offset-s1">
+                            <input 
+                                onChange={
+                                    (e:any) => {
+                                        //setMember({...member, name: e.currentTarget.value})
+                                }} 
+                                id="newsDescription" 
+                                type="text" 
+                                className="validate"
+                            />
+                            <label className="active" htmlFor="newsDescription">Подзаголовок</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s10 offset-s1">
+                            <textarea 
+                                onChange={
+                                    (e:any) => {
+                                        //setMember({...member, name: e.currentTarget.value})
+                                }} 
+                                id="newsBody" 
+                                className="materialize-textarea"
+                            />
+                            <label className="active" htmlFor="newsBody">Текст новости</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col s6">
+                            <span>Опубликовать: </span></div>
+                        <div className="col s6">
+                            <div className="switch">
+                                <label>
+                                Нет
+                                <input type="checkbox"/>
+                                <span className="lever"></span>
+                                Да
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col s10 offset-s1">
+                            <button 
+                                onClick={(e:MouseEvent<HTMLButtonElement>)=>{
+                                    e.preventDefault()
+                                    M.toast({html:'Новость добавлена'})
+                                }}
+                                className="btn">Добавить</button>
+                            <button 
+                                onClick={(e:MouseEvent<HTMLButtonElement>)=>{
+                                    e.preventDefault()
+                                    M.toast({html:'Новость обновлена'})
+                                }}
+                                className="btn">Обновить</button>
+                        </div>
+                    </div>
+                    <div className="row">
+
+                        <a className="waves-effect waves-light btn modal-trigger" href="#newsItemPreview" onClick={(e)=>{e.preventDefault()}}>Педпросмотр</a>
+
+                        <div id="newsItemPreview" className="modal">
+                            <a href="#!" className="modal-close waves-effect waves-red btn-flat right">X</a>
+                            <div className="modal-content">
+                                <NewsCard newsItem={newsFeedData.newsFeed[0]} />
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
         </div>  
     )

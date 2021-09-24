@@ -106,9 +106,9 @@ export const ManagePagesHomeFeatures = (props:any) => {
                                 <p>Посмотреть список иконок можно тут <a target="_blank" rel="noreferrer" href="https://icons.getbootstrap.com/">icons.getbootstrap.com</a></p>
                                 <div> <p>кликнете по интересующей вас иконке и скопируйте текст который начинается с 
                                     <code> bi-*</code> 
-                                    <a href="#!" onClick={(e:any)=>{e.preventDefault()}} data-target="modal1" className="modal-trigger">Пример</a>
+                                    <a href="#!" onClick={(e:any)=>{e.preventDefault()}} data-target="iconExampleModal" className="modal-trigger">Пример</a>
                                     </p>
-                                    <div id="modal1" className="modal">
+                                    <div id="iconExampleModal" className="modal">
                                         <a href="#!" className="modal-close waves-effect waves-red btn-flat right">X</a>
                                         <div className="modal-content">
                                             <img className="responsive-img" src={bootstrapExample} alt="asdqwe" />

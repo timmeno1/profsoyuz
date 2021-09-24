@@ -30,9 +30,10 @@ export const ManagePagesHomeMedia = (props:any) => {
                         
                     </div>
                     <div className="col s12">
-                        <a className="waves-effect waves-light btn modal-trigger" href="#modal2" onClick={(e)=>{e.preventDefault()}}>Педпросмотр</a>
+                        <a className="waves-effect waves-light btn modal-trigger" href="#mediaPreview" onClick={(e)=>{e.preventDefault()}}>Педпросмотр</a>
 
-                        <div id="modal2" className="modal">
+                        <div id="mediaPreview" className="modal">
+                            <a href="#!" className="modal-close waves-effect waves-red btn-flat right">X</a>
                             <div className="modal-content">
                                 <Media media={props.homePagePreview.media} />
                             </div>
