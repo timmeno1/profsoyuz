@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom'
-import { ManageNews } from './ManageNews'
+import { ManageNews } from './ManageNews/ManageNews'
 import { ManagePages } from './ManagePages/ManagePages'
-import { ManageMembers } from './ManageMembers'
+import { ManageMembers } from './ManageMembers/ManageMembers'
 import { useMediaQuery } from 'react-responsive'
 
 const Dashboard = () => {

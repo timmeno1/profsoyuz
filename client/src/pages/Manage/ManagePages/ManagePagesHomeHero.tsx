@@ -8,10 +8,10 @@ export const ManagePagesHomeHero = (props:any) => {
 
 
     return (
-        <div className="row custom-section">
-                <div className=" row"><h5>Главный Заголовок</h5></div>
+        <div className="custom-section">
+            <div className=" row"><h5>Главный Заголовок</h5></div>
 
-                <div className="col s12 m12 l6 ">
+            <div className="col s12 m12 l6 ">
                     <div className="row">
                         <div className="input-field col s10">
                             <i className="bi bi-person-circle prefix"></i>
@@ -59,7 +59,8 @@ export const ManagePagesHomeHero = (props:any) => {
                         </div>
                     </div>
                 </div>
-                <div className="col s12 m12 l6 overlay-hidden">
+            
+            <div className="col s12 m12 l6 overlay-hidden">
                     <div className="overlay-scroll materialboxed">
                         <PageHero
                             headingTitle={props.homePagePreview.headingTitle}
@@ -68,7 +69,8 @@ export const ManagePagesHomeHero = (props:any) => {
                         />
                     </div>
                 </div>
-                <button className="waves-effect waves-light btn" onClick={()=>{window.alert("изменения приняты хДД")}} >Применить изменения</button>
-            </div>
+            
+            <button className="waves-effect waves-light btn" onClick={()=>{window.alert("изменения приняты хДД")}} >Применить изменения</button>
+        </div>
     )
 }
