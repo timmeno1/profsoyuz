@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux/redux-store'
 
 import './App.css'
-import { Footer } from './Footer/Footer'
+import { FooterContainer } from './Footer/Footer'
 import { Navbar } from './Navbar/Navbar'
 import { News } from './pages/News/News'
 import { AboutUsContainer } from './pages/About/About'
@@ -37,7 +37,7 @@ function App() {
                 <HomeContainer />
               </Route>
             </Switch>
-          <Footer />
+          <FooterContainer />
           <BackToTopBtn />
         </div>
       </Router>

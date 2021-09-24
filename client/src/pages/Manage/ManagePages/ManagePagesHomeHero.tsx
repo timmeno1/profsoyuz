@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { PageHero } from '../Home/PageHero'
+import { PageHero } from '../../Home/PageHero'
 
 
 export const ManagePagesHomeHero = (props:any) => {

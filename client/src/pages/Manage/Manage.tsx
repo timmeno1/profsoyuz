@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom'
 import { ManageNews } from './ManageNews'
-import { ManagePages } from './ManagePages'
+import { ManagePages } from './ManagePages/ManagePages'
 import { ManageMembers } from './ManageMembers'
 import { useMediaQuery } from 'react-responsive'
 

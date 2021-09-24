@@ -1,5 +1,5 @@
 import React from 'react'
-import { Media } from '../Home/Media'
+import { Media } from '../../Home/Media'
 
 
 // TODO props types, make logic to add, delete and select media(photos and url) to the front page

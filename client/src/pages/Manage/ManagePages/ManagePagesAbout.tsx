@@ -1,14 +1,29 @@
-import React, {useRef, useState} from 'react'
-import { AboutUs } from '../About/About'
+import React, {useEffect, useRef, useState} from 'react'
+import { AboutUs } from '../../About/About'
 
 export const ManagePagesAbout = (props:any) => {
 
     const aboutPageFileRef = useRef<HTMLInputElement>(null)
+
+    const textArea = document.getElementById('#aboutPageText')
     
     const [aboutPagePreview, setAboutPagePreview] = useState({
         img: "https://loremflickr.com/400/300",
         heading: "О нас",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;"
+    })
+
+
+    useEffect(() => {
+
+        if(textArea) {
+            M.textareaAutoResize( textArea )
+        }
+
+        M.updateTextFields()
+        return () => {
+            
+        }
     })
     
     console.log("about")
@@ -29,25 +44,25 @@ export const ManagePagesAbout = (props:any) => {
                                                         setAboutPagePreview({...aboutPagePreview, heading: e.currentTarget.value})
                                                     }}
                                                 value={ aboutPagePreview.heading }
-                                                id="heroPageHeader"
+                                                id="aboutPageHeader"
                                                 type="text"
                                                 className="validate"
                                             />
-                                            <label htmlFor="heroPageHeader">Заголовок</label>
+                                            <label htmlFor="aboutPageHeader">Заголовок</label>
                                         </div>
                                     </div>
                             <div className="row">
                                         <div className="input-field col s10">
                                             <i className="bi bi-person-circle prefix"></i>
                                             <textarea 
-                                                id="heroPageTitle" 
+                                                id="aboutPageText" 
                                                 className="materialize-textarea" 
                                                 value={ aboutPagePreview.text }
                                                 onChange={(e:any)=>{
                                                     //@ts-ignore
                                                     setAboutPagePreview({...aboutPagePreview, text: e.currentTarget.value})
                                             }}/>
-                                            <label htmlFor="heroPageTitle">Текст</label>
+                                            <label htmlFor="aboutPageText">Текст</label>
                                         </div>
                                     </div>
                             <div className="row">

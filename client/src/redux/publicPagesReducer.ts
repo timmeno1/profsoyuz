@@ -67,6 +67,30 @@ const initialJoinPageState = {
         ]
 }
 
+const pageFooterInitialState = {
+    heading: "Footer Content",
+    infoText: "You can use rows and columns here to organize your footer content.",
+    socialHeading: "Обратная связь",
+    social: {
+      facebook: {
+        link: "#!",
+        text: "Facebook"
+      },
+      telegram: {
+        link: "#!",
+        text: "Telegram"
+      },
+      whatsapp: {
+        link: "#!",
+        text: "Whatsapp"
+      },
+      kakao: {
+        link: "#!",
+        text: "Kakao"
+      },
+    },
+    copyright: "2021 Copyright Text"
+  }
 
 export const homePageReducer = (state = initialHomePageState, action:any) => {
     switch (action.type) {
@@ -75,6 +99,12 @@ export const homePageReducer = (state = initialHomePageState, action:any) => {
 }
 
 export const aboutPageReducer = (state = initialAboutPageState, action:any) => {
+    switch (action.type) {
+        default: return state
+    }
+}
+
+export const pageFooter = (state = pageFooterInitialState, action:any) => {
     switch (action.type) {
         default: return state
     }

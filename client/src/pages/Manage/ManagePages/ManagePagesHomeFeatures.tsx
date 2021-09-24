@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import bootstrapExample from "../../assets/img/manage/bootstrap.jpg"
-import { Features } from '../Home/Features'
+import bootstrapExample from "../../../assets/img/manage/bootstrap.jpg"
+import { Features } from '../../Home/Features'
 
 export const ManagePagesHomeFeatures = (props:any) => {
 
