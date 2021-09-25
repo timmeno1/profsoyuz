@@ -53,6 +53,10 @@
   transition: 0.15s ease-in;
 }
 
+.customHover:hover {
+  background-color: #eee;
+}
+
 /* ======================  ====================== */
 
 .parallax-container {
@@ -172,6 +176,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .manageNav-item a {
   padding: 20px 10px;
   display: block;
+}
+
+.manage ul.collection {
+  margin-bottom: 0px;
+}
+
+.modalIconInput {
+  margin-left: -0.8rem !important;
 }
 
 /* =======================  manage News ======================= */

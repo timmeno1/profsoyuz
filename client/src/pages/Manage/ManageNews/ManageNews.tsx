@@ -50,7 +50,40 @@ export const ManageNews = () => {
     useEffect(() => {
         //let selectElems = document.querySelectorAll('.input-field')
         //M.FormSelect.init(selectElems)
-        M.AutoInit()
+
+        const dateStartElem = document.getElementById('dateStart')
+        const dateEndElem = document.getElementById('dateEnd')
+        const newsAuthorsSelect = document.getElementById('newsAuthorsSelect')
+        const newsTagsSelect = document.getElementById('newsTagsSelect')
+        const newsItemPreviewModal = document.getElementById('newsItemPreview')
+
+
+        if(dateEndElem && dateStartElem && newsAuthorsSelect && newsTagsSelect && newsItemPreviewModal) {
+            M.Datepicker.init(dateStartElem, {
+                yearRange: 70,
+                firstDay: 1,
+                onClose: () => {
+                    //setMember({...member, birthDate: datePicker.current!.value!})
+                    console.log('closed startDate')
+                    debugger
+                }
+            })
+            M.Datepicker.init(dateEndElem, {
+                yearRange: 70,
+                firstDay: 1,
+                onClose: () => {
+                    //setMember({...member, birthDate: datePicker.current!.value!})
+                    console.log('closed endDate')
+                    debugger
+                }
+            })
+            M.FormSelect.init(newsAuthorsSelect)
+            M.FormSelect.init(newsTagsSelect)
+            M.Modal.init(newsItemPreviewModal)
+        }
+        M.updateTextFields()
+
+
         return () => {
             
         }
@@ -62,7 +95,7 @@ export const ManageNews = () => {
                     <div className="newsManageFilter">
                         <h6 className="red-text">Фильтры для поиска новости</h6>
                         <div className="input-field">
-                            <select defaultValue="0">   {    // add here map function of stored authors
+                            <select defaultValue="0" id="newsAuthorsSelect">   {    // add here map function of stored newsAuthors
                              }
                                 <option value="0">Все Авторы</option>
                                 <option value="1">Алексей Щербаков</option>
@@ -72,7 +105,7 @@ export const ManageNews = () => {
                             <label >Автор</label>
                         </div>
                         <div className="input-field">
-                            <select defaultValue="0">   {    // add here map function of stored authors
+                            <select defaultValue="0" id="newsTagsSelect">   {    // add here map function of stored newsTags
                              }
                                 <option value="0">Все рубрики</option>
                                 <option value="1">Новости офиса</option>
@@ -85,7 +118,7 @@ export const ManageNews = () => {
                             <input 
                                 type="text" 
                                 className="datepicker" 
-                                id="DateStart"
+                                id="dateStart"
                             />
                             <label htmlFor="birthdate" >Дата начала</label>
                         </div>
@@ -93,20 +126,20 @@ export const ManageNews = () => {
                             <input 
                                 type="text" 
                                 className="datepicker" 
-                                id="DateEnd"
+                                id="dateEnd"
                             />
                             <label htmlFor="DateEnd" >Дата конца</label>
                         </div>
                         <div className="input-field">
-                            <input type="text" id="topicSearch" className="autocomplete" />
-                            <label htmlFor="topicSearch">Поиск по теме</label>
+                            <input type="text" id="titleSearch" className="autocomplete" />
+                            <label htmlFor="titleSearch">Поиск по теме</label>
                         </div>
                     </div>
                     <h6 className="red-text">Список новостей</h6>
                     <ul className="collection">
                         
                         <li className="collection-item">qwe</li>
-                        <li className="collection-item active brake-word">asgfdjslkgjsdlfkjglsdjf dsfgdf sldkfjglsdjfglkjsd dlsfgjsldfjglksdjfgljsdflkgjsdlfkjgd</li>
+                        <li className="collection-item brake-word">asgfdjslkgjsdlfkjglsdjf dsfgdf sldkfjglsdjfglkjsd dlsfgjsldfjglksdjfgljsdflkgjsdlfkjgd</li>
                         <li className="collection-item">zxc</li>
                         <li className="collection-item">123</li>
                         <li className="collection-item">rty</li>
