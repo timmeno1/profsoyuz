@@ -99,9 +99,13 @@ export const ManageMembers = () => {
                             </div>
 
                             <div className="row">
-                                    <button className="btn">
-                                        Добавить нового участника
-                                    </button>
+                                    <button data-target="modal3" className="btn modal-trigger">Добавить нового участника</button>
+                                                <div id="modal3" className="modal">
+                                                    <div className="modal-content">
+                                                        <MemberEdit submitJoinData={(a:any)=>{console.log(a)}}/>
+                                                        <button className="btn grey darken-2 modal-close">Закрыть</button>
+                                                    </div>
+                                                </div>
                                 </div>
                         </div>
                         <div className="col s12 m12 l7">
@@ -157,6 +161,7 @@ export const ManageMembers = () => {
                                                 <div id="modal1" className="modal">
                                                     <div className="modal-content">
                                                         <MemberEdit submitJoinData={(a:any)=>{console.log(a)}}/>
+                                                        <button className="btn grey darken-2 modal-close">Закрыть</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,6 +181,7 @@ export const ManageMembers = () => {
                                                 <div id="modal2" className="modal">
                                                     <div className="modal-content">
                                                         <MemberEdit submitJoinData={(a:any)=>{console.log(a)}}/>
+                                                        <button className="btn grey darken-2 modal-close">Закрыть</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,11 +1,69 @@
 import React, {MouseEvent,  RefObject, useEffect, useRef, useState} from 'react';
 import M from 'materialize-css'
+import { Document, HeadingLevel, Packer, Paragraph, Table, TableCell, TableRow, VerticalAlign, TextDirection, ImageRun, TableRowProperties, WidthType, HeightRule } from "docx";
+import { saveAs } from 'file-saver';
 
 
 type MemberEditType = any; // nado dopisat
 
 
+
+
+
+
+
 export const MemberEdit = (props:MemberEditType) => {
+
+
+    const table = new Table({
+        rows: [
+            new TableRow( {
+                children: [
+                    new TableCell({
+                        children: [
+                            new Paragraph({text:"광리"})
+                        ],
+                        verticalAlign: VerticalAlign.CENTER,
+                    }),
+                    new TableCell({
+                        children: [
+                            new Paragraph({text:"리미테드"})
+                        ],
+                        verticalAlign: VerticalAlign.CENTER
+                    }),
+                    new TableCell({
+                        children: [
+                            new Paragraph({text:"갤랙시"})
+                        ],
+                        verticalAlign: VerticalAlign.CENTER
+                    }),
+                    new TableCell({
+                        children: [
+                            new Paragraph({text:"헬리콥터"})
+                        ],
+                        verticalAlign: VerticalAlign.CENTER
+                    })
+                ],
+                height: { value: 20, rule: HeightRule.ATLEAST }
+            } )
+        ],
+        width: {
+            size: 100,
+            type: WidthType.PERCENTAGE,
+        }
+    })
+
+    const doc = new Document({
+        sections: [
+            {
+                children: [
+                    new Paragraph({ text:"테이블" }),
+                    table
+                ]
+            }
+        ],
+    });
+
 
     let datePicker:RefObject<HTMLInputElement> = useRef(null)
 
@@ -154,7 +212,15 @@ export const MemberEdit = (props:MemberEditType) => {
             </form>
             <div className="card-action">
 
-                    <button className="btn">Распечатать</button>
+                    <button className="btn" onClick={
+                        ()=>{
+                            Packer.toBlob(doc).then(blob => {
+                                console.log(blob);
+                                saveAs(blob, "example.docx");
+                                console.log("Document created successfully");
+                              });
+                        }
+                    }>Сохранить в файл</button>
                     
                     <button 
                         onClick={(e:MouseEvent)=>{
