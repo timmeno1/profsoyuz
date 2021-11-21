@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/profsoyuz-front/static/css/main.c3916b08.chunk.css",
+    "main.js": "/profsoyuz-front/static/js/main.cb9d8e9c.chunk.js",
+    "main.js.map": "/profsoyuz-front/static/js/main.cb9d8e9c.chunk.js.map",
+    "runtime-main.js": "/profsoyuz-front/static/js/runtime-main.c8bb0286.js",
+    "runtime-main.js.map": "/profsoyuz-front/static/js/runtime-main.c8bb0286.js.map",
+    "static/js/2.52fadea4.chunk.js": "/profsoyuz-front/static/js/2.52fadea4.chunk.js",
+    "static/js/2.52fadea4.chunk.js.map": "/profsoyuz-front/static/js/2.52fadea4.chunk.js.map",
+    "static/js/3.17364099.chunk.js": "/profsoyuz-front/static/js/3.17364099.chunk.js",
+    "static/js/3.17364099.chunk.js.map": "/profsoyuz-front/static/js/3.17364099.chunk.js.map",
+    "index.html": "/profsoyuz-front/index.html",
+    "static/css/main.c3916b08.chunk.css.map": "/profsoyuz-front/static/css/main.c3916b08.chunk.css.map",
+    "static/js/2.52fadea4.chunk.js.LICENSE.txt": "/profsoyuz-front/static/js/2.52fadea4.chunk.js.LICENSE.txt",
+    "static/media/bootstrap.63f09e4d.jpg": "/profsoyuz-front/static/media/bootstrap.63f09e4d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8bb0286.js",
+    "static/js/2.52fadea4.chunk.js",
+    "static/css/main.c3916b08.chunk.css",
+    "static/js/main.cb9d8e9c.chunk.js"
+  ]
+}
